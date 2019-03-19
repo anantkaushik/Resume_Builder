@@ -7,7 +7,7 @@ app=Flask(__name__)
 def home():
     return render_template("info.html")
 
-@app.route("/addinfo", methods = ['POST'])
+"""@app.route("/addinfo", methods = ['POST'])
 def addinfo():
     fname = request.form['fname']
     lname = request.form['lname']
@@ -17,7 +17,7 @@ def addinfo():
     con.commit()
     cur.close()
     con.close()
-    return ("<h1>Hello "+fname+" "+lname+"</h1>")
+    return ("<h1>Hello "+fname+" "+lname+"</h1>")"""
 
 if __name__=="__main__":
 	app.run(debug=True,port=5000)
