@@ -4,8 +4,8 @@ import sqlite3 as sql
 app=Flask(__name__)
 
 @app.route("/")
-def index():
-    return render_template("index.html")
+def home():
+    return render_template("info.html")
 
 """@app.route("/addinfo", methods = ['POST'])
 def addinfo():
@@ -20,4 +20,4 @@ def addinfo():
     return ("<h1>Hello "+fname+" "+lname+"</h1>")"""
 
 if __name__=="__main__":
-	app.run(debug=True,port=8000)
+	app.run(debug=True,port=5000)
