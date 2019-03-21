@@ -19,7 +19,7 @@ def addinfo():
     con.close()
     return ("<h1>Hello "+fname+" "+lname+"</h1>")"""
 
-""""Command"""
+"""Command2"""
 
 if __name__=="__main__":
 	app.run(debug=True,port=5000)
