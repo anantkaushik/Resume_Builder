@@ -4,9 +4,11 @@
         <title>Information</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">  
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.jss"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
         <link rel="stylesheet" href="static/style.css">
     </head>
     <body>
@@ -25,11 +27,11 @@
             </ul>
             <!-- fieldsets -->
             <fieldset>
-                <h2 class="fs-title">Personal Details</h2>
+                <h2 class="fs-title">Basic Details</h2>
                 <h3 class="fs-subtitle">Tell us something more about you</h3>
-                <input type="text" name="fname" placeholder="First Name"/>
-                <input type="text" name="lname" placeholder="Last Name"/>
-                <input type="text" name="phone" placeholder="Phone"/>
+                <input type="text" name="name" placeholder="Name" id="name" required/>
+                <input type="email" name="email" placeholder="Email ID" id="email" required/>
+                <input type="text" pattern="/(7|8|9)\d{9}/" name="mobno" placeholder="Mobile Number" id="mobno">
                 <input type="button" name="next" class="next action-button" value="Next"/>
             </fieldset>
             <fieldset>
