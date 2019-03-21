@@ -70,15 +70,59 @@
                             <option value="Employement Type" disabled selected>Employement Type</option>
                             <option value="Full Time">Full Time</option>
                             <option value="Part Time">Part Time</option>
-                            <option value="Internship"><Internship/option>
+                            <option value="Internship">Internship</option>
                             <option value="Freelancing">Freelancing</option>
                             <option value="Work From Home">Work From Home</option>
                     </select></br>
-                    <label for="joindate" class="col-md-2" style="padding-top:15px;">Joining Date</label>
-                    <input type="date" name="joindate" class="col-md-10" style="width: 83%;"/>                
+                    <label for="joindate" class="col-md-2" style="padding-top:15px; float: left;">Duration From</label>
+                    <input type="date" name="joindate" class="col-md-10" style="width: 83.3%;"/> 
+                    <label for="enddate" class="col-md-2" style="padding-top:15px; float: left;">Duration To</label>
+                    <input type="date" name="enddate" class="col-md-10" style="width: 83.3%;"/>          
+                    <input type="text" name="designation" placeholder="Designation" id="designation"/>
+                    <input type="text" name="duties" placeholder="Nature of Duties" id="duties"/>     
                 </div>
                     <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-                    <input type="submit" name="submit" class="submit action-button" value="Submit"/>
+                    <input type="button" name="next" class="next action-button" value="Next"/>
+            </fieldset>
+            <fieldset>
+                    <h2 class="fs-title">Skills And Awards</h2>
+                    <h3 class="fs-subtitle">Lets Us Know About Your Skills and Achivements</h3>
+                    <label for="skills">Add Your Skills</label>
+                    <input type="text" name="skills" placeholder="Skills" id="skills"/>
+                    <label for="activities">Tell About Your Activities</label>
+                    <input type="text" name="activities" placeholder="Activities" id="activities"/>
+                    <label for="achievements">Mention Yours Awards and Achivements</label>
+                    <input type="text" name="achievements" placeholder="Awards and Achievements" id="achievements" style="text-align:left"/>
+                    <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                    <input type="button" name="next" class="next action-button" value="Next"/>
+            </fieldset>
+            <fieldset>
+                    <h2 class="fs-title">Personal Details</h2>
+                    <h3 class="fs-subtitle">Mention Your Other Details</h3>
+                    <input type="text" name="fname" placeholder="Father's Name" id="fname"/>
+                    <label for="DOB" class="col-md-2" style="padding-top:15px; float: left;">Date of Birth</label>
+                    <input type="date" name="DOB" class="col-md-10" style="width: 83.3%;"/>
+                    <label for="sex" class="col-md-2">Gender</label>
+                    <select name="sex" id="sex" class="dropdwn col-md-10" style="width: 83.3%;">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                    </select>
+                    <input type="text" name="nationality" placeholder="Nationality" id="nationality"/>
+                    <input type="text" name="hai" placeholder="Hobbies and Interest" id="hai"/>
+                    <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                    <input type="button" name="next" class="next action-button" value="Next"/>
+            </fieldset>
+            <fieldset>
+                    <h2 class="fs-title">References</h2>
+                    <h3 class="fs-subtitle">Mention Your References (If Any)</h3>
+                    <div class="refernces">
+                        <input type="text" name="rname" placeholder="Reference Name" id="rname"/>
+                        <input type="text" name="rorg" placeholder="Organization" id="rorg"/>
+                        <input type="number" pattern="/[6|7|8|9]\d{9}/" name="rnum" placeholder="Mobile Number" id="rnum"/>
+                        <input type="email" name="remail" placeholder="Email ID" id="remail"/>
+                    </div>
+                    <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                    <input type="submit" name="Submit" class="submit action-button" value="Submit"/>
             </fieldset>
         </form>
     </div>
