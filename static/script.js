@@ -104,6 +104,9 @@ $( "#markstot" ).keyup(function() {
 		$("#marks").show();
 	}
 });
+
+var today = new Date();
+document.getElementsByName("joindate")[0].setAttribute('max',today);
 /*$( "#degreeName" ).focus(function() {
 	$("#degreeName").hide();
 	$("#degree").show();
