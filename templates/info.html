@@ -61,13 +61,23 @@
                 <input type="button" name="next" class="next action-button" value="Next"/>
             </fieldset>
             <fieldset>
-                <h2 class="fs-title">Create your account</h2>
-                <h3 class="fs-subtitle">Fill in your credentials</h3>
-                <input type="text" name="email" placeholder="Email"/>
-                <input type="password" name="pass" placeholder="Password"/>
-                <input type="password" name="cpass" placeholder="Confirm Password"/>
-                <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-                <input type="submit" name="submit" class="submit action-button" value="Submit"/>
+                <h2 class="fs-title">Work Experience</h2>
+                <h3 class="fs-subtitle">Fill Details About Your Work Experience</h3>
+                <div id="workexperience">
+                    <input type="text" name="ename" placeholder="Name of Employer" id="ename"/>
+                    <select name="etype" id="etype">
+                            <option value="Employement Type" disabled selected></option>
+                            <option value="Full Time"></option>
+                            <option value="Part Time"></option>
+                            <option value="Internship"></option>
+                            <option value="Freelancing"></option>
+                            <option value="Work From Home"></option>
+                    </select></br>
+                    <label for="joindate" class="col-xs-2" style="display: inline-block;">Joining Date</label>
+                    <input type="date" name="joindate"/>                        
+                    </div>
+                    <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                    <input type="submit" name="submit" class="submit action-button" value="Submit"/>
             </fieldset>
         </form>
         <!-- link to designify.me code snippets -->
