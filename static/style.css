@@ -169,7 +169,6 @@ body {
     content: none;
 }
 
-/*marking active/completed steps green*/
 /*The number of the step and the connector before it = green*/
 #progressbar li.active:before, #progressbar li.active:after {
     background: #ee0979;
@@ -196,4 +195,16 @@ body {
 .dme_link a:hover, .dme_link a:focus {
     background: #C5C5F1;
     text-decoration: none;
+}
+
+.dropdwn{
+    background-color: white;
+    width: 100%;
+    color: #666;
+    font-size: 13px;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    font-family: montserrat;
 }
