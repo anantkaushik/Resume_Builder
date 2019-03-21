@@ -31,15 +31,32 @@
                 <h3 class="fs-subtitle">Tell us something more about you</h3>
                 <input type="text" name="name" placeholder="Name" id="name" required/>
                 <input type="email" name="email" placeholder="Email ID" id="email" required/>
-                <input type="text" pattern="/(7|8|9)\d{9}/" name="mobno" placeholder="Mobile Number" id="mobno">
+                <input type="text" pattern="/(6|7|8|9)\d{9}/" name="mobno" placeholder="Mobile Number" id="mobno">
+                <input type="text" name="address" placeholder="Address" id="address">
+                <input type="url" name="linkedin" placeholder="LinkedIn Account" id="laccount">
+                <input type="url" name="portfolio" placeholder="Twitter/Blog/Portfolio" id="portfolio">
+                <input type="text" name="objective" placeholder="Objective" id="objective" required>
                 <input type="button" name="next" class="next action-button" value="Next"/>
             </fieldset>
             <fieldset>
-                <h2 class="fs-title">Social Profiles</h2>
-                <h3 class="fs-subtitle">Your presence on the social network</h3>
-                <input type="text" name="twitter" placeholder="Twitter"/>
-                <input type="text" name="facebook" placeholder="Facebook"/>
-                <input type="text" name="gplus" placeholder="Google Plus"/>
+                <h2 class="fs-title">Academic Details</h2>
+                <h3 class="fs-subtitle">Fill your Academic Details</h3>
+                <div id="acadform">
+                    <select name="degree" id="degree" style="width:100%">
+                        <option value="Secondary Level (Xth class)" style="color:black"></option>
+                        <option value="Higher Secondary Level (XIIth class)"></option>
+                        <option value="Graduate"></option>
+                        <option value="Post Graduate"></option>
+                        <option value="Doctoral"></option>
+                    </select>
+                    <input type="text" name="course" placeholder="Course Name" id="course" required/>
+                    <input type="number" name="year" placeholder="Year of Passing" id="year" required/>
+                    <input type="text" name="uname" placeholder="University/ Institute/ School" id="uname" required/>
+                    <input type="text" name="specialization" placeholder="Specialization" id="specialization" required/>
+                    <input type="number" name="marksobt" placeholder="CGPA/ Marks Obtained" id="marksobt" required/>
+                    <input type="number" name="markstot" placeholder="Total CGPA/ Marks" id="markstot" required/>
+                    <input type="button" name="percentage" placeholder="Calculate Percentage" id="percentage" onclick=calpercentage()/>
+                </div>
                 <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
                 <input type="button" name="next" class="next action-button" value="Next"/>
             </fieldset>

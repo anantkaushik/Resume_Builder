@@ -80,3 +80,13 @@ $(".previous").click(function(){
 $(".submit").click(function(){
 	return false;
 })
+
+function calpercentage{
+	var markstot = document.getElementById("markstot").value
+	var marksobt = document.getElementById("marksobt")
+	if (markstot == 10){
+		document.getElementById("percentage") = marksobt * 9.5 ;
+	} else {
+		document.getElementById("percentage") = (marksobt/markstot) * 100;
+	}
+}
