@@ -42,12 +42,13 @@
                 <h2 class="fs-title">Academic Details</h2>
                 <h3 class="fs-subtitle">Fill your Academic Details</h3>
                 <div id="acadform">
-                    <select name="degree" id="degree" style="width:100%">
-                        <option value="Secondary Level (Xth class)" style="color:black"></option>
-                        <option value="Higher Secondary Level (XIIth class)"></option>
-                        <option value="Graduate"></option>
-                        <option value="Post Graduate"></option>
-                        <option value="Doctoral"></option>
+                    <select name="degree" id="degree" class="dropdwn" >
+                        <option value="Degree" disabled selected>Degree</option>
+                        <option value="Secondary Level (Xth class)">Secondary Level (Xth class)</option>
+                        <option value="Higher Secondary Level (XIIth class)">Higher Secondary Level (XIIth class)</option>
+                        <option value="Graduate">Graduate</option>
+                        <option value="Post Graduate">Post Graduate</option>
+                        <option value="Doctoral">Doctoral</option>
                     </select>
                     <input type="text" name="course" placeholder="Course Name" id="course" required/>
                     <input type="number" name="year" placeholder="Year of Passing" id="year" required/>
@@ -55,7 +56,7 @@
                     <input type="text" name="specialization" placeholder="Specialization" id="specialization" required/>
                     <input type="number" name="marksobt" placeholder="CGPA/ Marks Obtained" id="marksobt" required/>
                     <input type="number" name="markstot" placeholder="Total CGPA/ Marks" id="markstot" required/>
-                    <input type="button" name="percentage" placeholder="Calculate Percentage" id="percentage" onclick=calpercentage()/>
+                    <input type="text" name="marks" id = "marks" hidden/>
                 </div>
                 <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
                 <input type="button" name="next" class="next action-button" value="Next"/>
@@ -65,26 +66,21 @@
                 <h3 class="fs-subtitle">Fill Details About Your Work Experience</h3>
                 <div id="workexperience">
                     <input type="text" name="ename" placeholder="Name of Employer" id="ename"/>
-                    <select name="etype" id="etype">
-                            <option value="Employement Type" disabled selected></option>
-                            <option value="Full Time"></option>
-                            <option value="Part Time"></option>
-                            <option value="Internship"></option>
-                            <option value="Freelancing"></option>
-                            <option value="Work From Home"></option>
+                    <select name="etype" id="etype" class="dropdwn">
+                            <option value="Employement Type" disabled selected>Employement Type</option>
+                            <option value="Full Time">Full Time</option>
+                            <option value="Part Time">Part Time</option>
+                            <option value="Internship"><Internship/option>
+                            <option value="Freelancing">Freelancing</option>
+                            <option value="Work From Home">Work From Home</option>
                     </select></br>
-                    <label for="joindate" class="col-xs-2" style="display: inline-block;">Joining Date</label>
-                    <input type="date" name="joindate"/>                        
-                    </div>
+                    <label for="joindate" class="col-md-2" style="padding-top:15px;">Joining Date</label>
+                    <input type="date" name="joindate" class="col-md-10" style="width: 83%;"/>                
+                </div>
                     <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
                     <input type="submit" name="submit" class="submit action-button" value="Submit"/>
             </fieldset>
         </form>
-        <!-- link to designify.me code snippets -->
-        <div class="dme_link">
-            <p><a href="http://designify.me/code-snippets-js/" target="_blank">More Code Snippets</a></p>
-        </div>
-        <!-- /.link to designify.me code snippets -->
     </div>
 </div>
 <!-- /.MultiStep Form -->

@@ -80,13 +80,40 @@ $(".previous").click(function(){
 $(".submit").click(function(){
 	return false;
 })
-
-function calpercentage{
+$( "#marksobt" ).keyup(function() {
+	var markstot = $('#markstot').val();
+	var marksobt = $('#marksobt').val();
+	if(markstot != '' && marksobt != ''){
+		if (markstot == 10){
+			$('#marks').val(marksobt * 9.5);
+		} else {
+			$('#marks').val((marksobt/markstot) * 100);
+		}
+		$("#marks").show();
+	}
+});
+$( "#markstot" ).keyup(function() {
+	var markstot = $('#markstot').val();
+	var marksobt = $('#marksobt').val();
+	if(markstot != '' && marksobt != ''){
+		if (markstot == 10){
+			$('#marks').val(marksobt * 9.5);
+		} else {
+			$('#marks').val((marksobt/markstot) * 100);
+		}
+		$("#marks").show();
+	}
+});
+/*$( "#degreeName" ).focus(function() {
+	$("#degreeName").hide();
+	$("#degree").show();
+  });
+function calpercentage(){
 	var markstot = document.getElementById("markstot").value
-	var marksobt = document.getElementById("marksobt")
+	var marksobt = document.getElementById("marksobt").value
 	if (markstot == 10){
 		document.getElementById("percentage") = marksobt * 9.5 ;
 	} else {
 		document.getElementById("percentage") = (marksobt/markstot) * 100;
 	}
-}
+}*/
