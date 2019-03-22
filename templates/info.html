@@ -29,13 +29,13 @@
             <fieldset>
                 <h2 class="fs-title">Basic Details</h2>
                 <h3 class="fs-subtitle">Tell us something more about you</h3>
-                <input type="text" name="name" placeholder="Name" id="name" required/>
-                <input type="email" name="email" placeholder="Email ID" id="email" required/>
-                <input type="text" pattern="/(6|7|8|9)\d{9}/" name="mobno" placeholder="Mobile Number" id="mobno">
-                <input type="text" name="address" placeholder="Address" id="address">
-                <input type="url" name="linkedin" placeholder="LinkedIn Account" id="laccount">
-                <input type="url" name="portfolio" placeholder="Twitter/Blog/Portfolio" id="portfolio">
-                <input type="text" name="objective" placeholder="Objective" id="objective" required>
+                <input type="text" name="uname" placeholder="Name" id="uname" required/>
+                <input type="email" name="uemail" placeholder="Email ID" id="uemail" required/>
+                <input type="text" pattern="/(6|7|8|9)\d{9}/" name="umobno" placeholder="Mobile Number" id="umobno">
+                <input type="text" name="uaddress" placeholder="Address" id="uaddress">
+                <input type="url" name="ulinkedin" placeholder="LinkedIn Account" id="ulaccount">
+                <input type="url" name="uportfolio" placeholder="Twitter/Blog/Portfolio" id="uportfolio">
+                <input type="text" name="uobjective" placeholder="Objective" id="uobjective" required>
                 <input type="button" name="next" class="next action-button" value="Next"/>
             </fieldset>
             <fieldset>
@@ -52,7 +52,7 @@
                     </select>
                     <input type="text" name="course" placeholder="Course Name" id="course" required/>
                     <input type="number" name="year" placeholder="Year of Passing" id="year" required/>
-                    <input type="text" name="uname" placeholder="University/ Institute/ School" id="uname" required/>
+                    <input type="text" name="uniname" placeholder="University/ Institute/ School" id="uniname" required/>
                     <input type="text" name="specialization" placeholder="Specialization" id="specialization" required/>
                     <input type="number" name="marksobt" placeholder="CGPA/ Marks Obtained" id="marksobt" required/>
                     <input type="number" name="markstot" placeholder="Total CGPA/ Marks" id="markstot" required/>
@@ -75,7 +75,7 @@
                             <option value="Work From Home">Work From Home</option>
                     </select></br>
                     <label for="joindate" class="col-md-2" style="padding-top:15px; float: left;">Duration From</label>
-                    <input type="date" name="joindate" class="col-md-10" style="width: 83.3%;"/> 
+                    <input type="date" id="joindate" name="joindate" class="col-md-10" style="width: 83.3%;"/> 
                     <label for="enddate" class="col-md-2" style="padding-top:15px; float: left;">Duration To</label>
                     <input type="date" name="enddate" class="col-md-10" style="width: 83.3%;"/>          
                     <input type="text" name="designation" placeholder="Designation" id="designation"/>
