@@ -80,14 +80,29 @@ $(".previous").click(function(){
 $(".submit").click(function(){
 	return false;
 })
+
+function precise_round(num, dec){
+ 
+	if ((typeof num !== 'number') || (typeof dec !== 'number')) 
+  return false; 
+  
+	var num_sign = num >= 0 ? 1 : -1;
+	  
+	return (Math.round((num*Math.pow(10,dec))+(num_sign*0.0001))/Math.pow(10,dec)).toFixed(dec);
+}  
+
 $( "#marksobt" ).keyup(function() {
 	var markstot = $('#markstot').val();
 	var marksobt = $('#marksobt').val();
 	if(markstot != '' && marksobt != ''){
 		if (markstot == 10){
-			$('#marks').val(marksobt * 9.5);
+			if (marksobt <= 10 ){
+				$('#marks').val(parseFloat((marksobt * 9.5)).toFixed(2));
+			} else {
+				$('#marks').val("Enter Valid Marks Obtained (Range 0 to 10)");
+			}
 		} else {
-			$('#marks').val((marksobt/markstot) * 100);
+			$('#marks').val(parseFloat((marksobt/markstot) * 100).toFixed(2));
 		}
 		$("#marks").show();
 	}
@@ -97,9 +112,13 @@ $( "#markstot" ).keyup(function() {
 	var marksobt = $('#marksobt').val();
 	if(markstot != '' && marksobt != ''){
 		if (markstot == 10){
-			$('#marks').val(marksobt * 9.5);
+			if (marksobt <= 10 ){
+				$('#marks').val(parseFloat((marksobt * 9.5)).toFixed(2));
+			} else {
+				$('#marks').val("Enter Valid Marks Obtained (Range 0 to 10)");
+			}
 		} else {
-			$('#marks').val((marksobt/markstot) * 100);
+			$('#marks').val(parseFloat((marksobt/markstot) * 100).toFixed(2));
 		}
 		$("#marks").show();
 	}
