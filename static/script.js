@@ -17,12 +17,13 @@ var yyyy = today.getFullYear();
 
 today = yyyy+'-'+mm+'-'+dd;
 document.getElementById("datePickerId").setAttribute("max", today);//setting date
-$(".next").click(function(){
+
+function nextt(x){
 	if(animating) return false;
 	animating = true;
 	
-	current_fs = $(this).parent();
-	next_fs = $(this).parent().next();
+	current_fs = $(x).parent();
+	next_fs = $(x).parent().next();
 	
 	//activate next step on progressbar using the index of next_fs
 	$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
@@ -53,6 +54,9 @@ $(".next").click(function(){
 		//this comes from the custom easing plugin
 		easing: 'easeInOutBack'
 	});
+}
+$(".next").click(function(){
+	nextt(this);
 });
 
 $(".previous").click(function(){
@@ -136,7 +140,11 @@ $( "#markstot" ).keyup(function() {
 		$("#marks").show();
 	}
 });
-/*$( "#degreeName" ).focus(function() {
+
+/*$("#basicDetails").click(function(event){
+	return false
+}); 
+$( "#degreeName" ).focus(function() {
 	$("#degreeName").hide();
 	$("#degree").show();
   });
@@ -149,3 +157,14 @@ function calpercentage(){
 		document.getElementById("percentage") = (marksobt/markstot) * 100;
 	}
 }*/
+$('#basicDetails').click(function (event) {
+	var uname = $('#uname').val();
+	var email = $('#uemail').val();
+	var mobno = $('#umobno').val();
+	var objective = $('#uobjective').val();
+	if (uname == "" || email == "" || mobno == "" || objective == ""){
+		alert("Enter all the information")
+	} else{
+		nextt('#basicDetails');
+	}
+});
