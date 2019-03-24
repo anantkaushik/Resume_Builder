@@ -141,22 +141,6 @@ $( "#markstot" ).keyup(function() {
 	}
 });
 
-/*$("#basicDetails").click(function(event){
-	return false
-}); 
-$( "#degreeName" ).focus(function() {
-	$("#degreeName").hide();
-	$("#degree").show();
-  });
-function calpercentage(){
-	var markstot = document.getElementById("markstot").value
-	var marksobt = document.getElementById("marksobt").value
-	if (markstot == 10){
-		document.getElementById("percentage") = marksobt * 9.5 ;
-	} else {
-		document.getElementById("percentage") = (marksobt/markstot) * 100;
-	}
-}*/
 $('#basicDetails').click(function (event) {
 	var uname = $('#uname').val();
 	var email = $('#uemail').val();
@@ -165,6 +149,24 @@ $('#basicDetails').click(function (event) {
 	if (uname == "" || email == "" || mobno == "" || objective == ""){
 		alert("Enter all the information")
 	} else{
+		console.log(uname);
+		$.ajax({
+			url: '/addbasic',
+			data: $('form').serialize(),
+			/*data : {
+				uname : $('#uname').val(),
+				email : $('#uemail').val(),
+		    mobno : $('#umobno').val(),
+		    objective : $('#uobjective').val()
+			},*/
+			type: 'POST',
+			success: function(response){
+				console.log("success");
+			},
+			error: function(error){
+				console.log(error);
+			}
+});
 		nextt('#basicDetails');
 	}
 });
