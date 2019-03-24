@@ -29,6 +29,12 @@ def addbasic():
     linkedin = request.form['ulinkedin'] if request.form['ulinkedin'] else "NULL" 
     portfolio = request.form['uportfolio'] if request.form['uportfolio'] else "NULL" 
     print(name,email,mob,objective,address,linkedin,portfolio)
+    conn = sql.connect('static/resumebuilder.db')
+    cur = conn.cursor()
+    cur.execute("INSERT INTO user (uname,uemail,umobno,uaddress,ulinkedin,uportfolio,uobjective)VALUES (?,?,?,?,?,?,?)",(name,email,mob,address,linkedin,portfolio,objective))
+    conn.commit()
+    cur.close()
+    conn.close()
     #return json.dumps({'status':200, 'edit':edit, 'movid':mov_id})
     return json.dumps({'status':200})
 
