@@ -7,18 +7,6 @@ app=Flask(__name__)
 def home():
     return render_template("info.html")
 
-"""@app.route("/addinfo", methods = ['POST'])
-def addinfo():
-    fname = request.form['fname']
-    lname = request.form['lname']
-    con=sql.connect("static/info.db")
-    cur=con.cursor()
-    cur.execute("INSERT INTO user (firstName,lastName)VALUES (?,?)",(fname,lname)) 
-    con.commit()
-    cur.close()
-    con.close()
-    return ("<h1>Hello "+fname+" "+lname+"</h1>")"""
-
 @app.route('/addbasic', methods = ['GET','POST'])
 def addbasic():
     name = request.form['uname']
