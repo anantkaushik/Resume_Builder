@@ -6,6 +6,8 @@ app=Flask(__name__)
 app.config["CACHE_TYPE"] = "null"
 app.secret_key = os.urandom(24)
 
+APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+
 @app.route("/signup", methods=["POST"])
 def signup():
     if request.method == "POST":
@@ -34,6 +36,44 @@ def signup():
         else:
             return "<h1>Password and Confirm password does not matched</h1>"
     return "<h1>Something Went Wrong Try Again</h1>"
+
+@app.route("/login", methods=["POST"])
+def login():
+    if request.method == "POST":
+        emailid = request.form['emailLogin']
+        password = request.form['passwordLogin']
+        print(emailid,password)
+        con = sql.connect("static/resumebuilder.db")
+        cur = con.cursor()
+        try:
+            cur.execute("select uid from credentials where email = ?",(emailid,))
+            uid = cur.fetchone()
+        except:
+            return "<h1>User Does Not Exist</h1>"
+        emailid = emailid.lower()
+        cur.execute("select password from credentials where email = ?",(emailid,))
+        a = cur.fetchone()
+        print(a)
+        cur.execute("select name from credentials where email = ?",(emailid,))
+        b = cur.fetchone()
+        cur.close()
+        con.close()
+        uid = str(uid)
+        uid = uid[1:-2]
+        print(uid)
+        ta=str(a)
+        output=ta[2:-3]
+        tb=str(b)
+        name=tb[2:-3]
+        session.pop('user', None)
+        if request.form['passwordLogin'] == output and output != '':
+            session['user'] = name
+            session['email'] = emailid
+            session['uid'] = uid
+            return redirect('/form')
+        return "<h1>Password and EmailId does not matched</h1>"
+    else:
+      return render_template("index.html")
 
 @app.route("/form")
 def form():

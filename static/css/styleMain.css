@@ -224,4 +224,22 @@ p {
     .submit-btn  {
     width: 100%; } }
 
-/*# sourceMappingURL=style.css.map */
+#login-form{
+  display: none;
+}
+.signin-text{
+  padding-top: 10px;
+  color: #fff;
+}
+#signin-btn{
+  color: #ff97a4;
+}
+#signin-btn:hover{
+  cursor: pointer;
+}
+#signup-btn{
+  color: #ff97a4;
+}
+#signup-btn:hover{
+  cursor: pointer;
+}

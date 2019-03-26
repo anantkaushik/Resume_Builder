@@ -40,6 +40,23 @@
 						<input type="cpassword" class="form-control" name="repassword" data-validation="length" data-validation-length="min8">
 					</div>
 					<input type="submit" value="create my account" class="submit-btn">
+					<p class="signin-text">Already have Account? <span id="signin-btn"> Sign In</span></p>
+				</form>
+				<form action="/login" id="login-form" method="POST">
+					<div class="form-header">
+						<h3>Log In</h3>
+						<img src="static/images/sign-up.png" alt="" class="sign-up-icon">
+					</div>
+					<div class="form-group">
+						<label for="">E-mail:</label>
+						<input type="text" class="form-control" name="emailLogin" data-validation="email">
+					</div>
+					<div class="form-group" >
+						<label for="">Password:</label>
+						<input type="password" class="form-control" name="passwordLogin" data-validation="length" data-validation-length="min8">
+					</div>
+					<input type="submit" value="Log In" class="submit-btn">
+					<p class="signin-text">Don't have Account? <span id="signup-btn"> Sign Up</span></p>
 				</form>
 			</div>
 			
