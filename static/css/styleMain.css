@@ -46,7 +46,7 @@ a {
     width: 30.1%; }
 
 .image-holder {
-  background: url("../images/registration-form-8.jpg") no-repeat;
+  background: url("../images/bg.jpg") no-repeat;
   background-size: cover; }
   .image-holder img {
     display: none; }
