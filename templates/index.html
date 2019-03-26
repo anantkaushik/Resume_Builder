@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>RegistrationForm_v8 by Colorlib</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- MATERIAL DESIGN ICONIC FONT -->
+		<link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+		
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="static/css/styleMain.css">
+	</head>
+
+	<body>
+
+		<div class="wrapper">
+			<div class="image-holder">
+			</div>
+			<div class="form-inner">
+				<form action="/signup" id="signup-form" method="POST">
+					<div class="form-header">
+						<h3>Sign up</h3>
+						<img src="static/images/sign-up.png" alt="" class="sign-up-icon">
+					</div>
+					<div class="form-group">
+						<label for="">Name:</label>
+						<input type="text" class="form-control" name="name" data-validation-length="min1">
+					</div>
+					<div class="form-group">
+						<label for="">E-mail:</label>
+						<input type="text" class="form-control" name="email" data-validation="email">
+					</div>
+					<div class="form-group" >
+						<label for="">Password:</label>
+						<input type="password" class="form-control" name="password" data-validation="length" data-validation-length="min8">
+					</div>
+					<div class="form-group" >
+						<label for="">Confirm Password:</label>
+						<input type="cpassword" class="form-control" name="repassword" data-validation="length" data-validation-length="min8">
+					</div>
+					<input type="submit" value="create my account" class="submit-btn">
+					<p class="signin-text">Already have Account? <span id="signin-btn"> Sign In</span></p>
+				</form>
+				<form action="/login" id="login-form" method="POST">
+					<div class="form-header">
+						<h3>Log In</h3>
+						<img src="static/images/sign-up.png" alt="" class="sign-up-icon">
+					</div>
+					<div class="form-group">
+						<label for="">E-mail:</label>
+						<input type="text" class="form-control" name="emailLogin" data-validation="email">
+					</div>
+					<div class="form-group" >
+						<label for="">Password:</label>
+						<input type="password" class="form-control" name="passwordLogin" data-validation="length" data-validation-length="min8">
+					</div>
+					<input type="submit" value="Log In" class="submit-btn">
+					<p class="signin-text">Don't have Account? <span id="signup-btn"> Sign Up</span></p>
+				</form>
+			</div>
+			
+		</div>
+		
+		<script src="static/js/jquery-3.3.1.min.js"></script>
+		<script src="static/js/jquery.form-validator.min.js"></script>
+		<script src="static/js/main.js"></script>
+</html>
