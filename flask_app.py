@@ -70,6 +70,7 @@ def login():
             session['user'] = name
             session['email'] = emailid
             session['uid'] = uid
+            print(session['user'])
             return redirect('/form')
         return "<h1>Password and EmailId does not matched</h1>"
     else:
@@ -77,6 +78,7 @@ def login():
 
 @app.route("/form")
 def form():
+    print(session['user'])
     return render_template("info.html")
 
 @app.route("/")
@@ -92,7 +94,6 @@ def addbasic():
     address = request.form['uaddress'] if request.form['uaddress'] else "NULL" 
     linkedin = request.form['ulinkedin'] if request.form['ulinkedin'] else "NULL" 
     portfolio = request.form['uportfolio'] if request.form['uportfolio'] else "NULL" 
-    print(name,email,mob,objective,address,linkedin,portfolio)
     conn = sql.connect('static/resumebuilder.db')
     cur = conn.cursor()
     cur.execute("INSERT INTO user (uname,uemail,umobno,uaddress,ulinkedin,uportfolio,uobjective)VALUES (?,?,?,?,?,?,?)",(name,email,mob,address,linkedin,portfolio,objective))
@@ -101,6 +102,44 @@ def addbasic():
     conn.close()
     #return json.dumps({'status':200, 'edit':edit, 'movid':mov_id})
     return json.dumps({'status':200})
+
+@app.route('/addAcad', methods = ['GET','POST'])
+def addAcad():
+    print(session['uid'])
+    course = request.form['course']
+    degree = request.form['degree']
+    year = request.form['year']
+    uniname = request.form['uniname']
+    specialization = request.form['specialization']
+    marksobt = request.form['marksobt']
+    markstot = request.form['markstot']
+    marks = request.form['marks']
+    print(course,degree,year,uniname,specialization,marksobt,markstot,marks,sep='\n')
+    conn = sql.connect('static/resumebuilder.db')
+    cur = conn.cursor()
+    cur.execute("select uid from academics where uid = ? and degree = ?",(session['uid'],degree))
+    a = cur.fetchone()
+    if a != None:
+        cur.execute("DELETE from academics where uid = ? and degree = ?",(session['uid'],degree))
+    cur.execute("INSERT INTO academics (degree,course,year,uniname,specialization,marksobt,markstot,marks,uid)VALUES (?,?,?,?,?,?,?,?,?)",(degree,course,year,uniname,specialization,marksobt,markstot,marks,session['uid']))
+    conn.commit()
+    cur.close()
+    conn.close()
+    return json.dumps({'status':200})
+
+@app.route('/delAcad', methods = ['GET','POST'])
+def delAcad():
+    print("WHYYYYY")
+    course = request.form['course']
+    degree = request.form['degree']
+    conn = sql.connect('static/resumebuilder.db')
+    cur = conn.cursor()
+    cur.execute("DELETE from academics where uid = ? and degree = ?",(session['uid'],degree))
+    conn.commit()
+    cur.close()
+    conn.close()
+    return json.dumps({'status':200})
+
 
 if __name__=="__main__":
 	app.run(debug=True,port=5000)

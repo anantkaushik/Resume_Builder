@@ -42,7 +42,7 @@
             <fieldset>
                 <h2 class="fs-title">Academic Details</h2>
                 <h3 class="fs-subtitle">Fill your Academic Details</h3>
-                <div id="acadform">
+                <div id="acadform" class="acadDetails">
                     <select name="degree" id="degree" class="dropdwn" >
                         <option value="Degree" disabled selected>Degree</option>
                         <option value="Secondary Level (Xth class)">Secondary Level (Xth class)</option>
@@ -58,7 +58,13 @@
                     <input type="number" name="marksobt" placeholder="CGPA/ Marks Obtained" id="marksobt" />
                     <input type="number" name="markstot" placeholder="Total CGPA/ Marks" id="markstot" />
                     <input type="text" name="marks" id = "marks" hidden/>
+                    <input type="button" name="addToDB" class="action-button addToDB" value="ADD"/>   
+                    <input type="button" name="removeFromDB" class="action-button removeFromDB" value="REMOVE"/>                    
+                    <hr>
                 </div>
+                <div class="acadFormD">
+                </div>
+                <input type="button" value="Add Course" class="action-button" id="addCourse">
                 <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
                 <input type="button" name="next" class="next action-button" value="Next"/>
             </fieldset>

@@ -3,7 +3,6 @@
 var current_fs, next_fs, previous_fs; //fieldsets
 var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
-
 var today = new Date();
 var dd = today.getDate();
 var mm = today.getMonth()+1; //January is 0!
@@ -109,35 +108,35 @@ function precise_round(num, dec){
 }  
 
 $( "#marksobt" ).keyup(function() {
-	var markstot = $('#markstot').val();
-	var marksobt = $('#marksobt').val();
+	var markstot = $('#markstot', $(this).closest("div.acadDetails")).val();
+	var marksobt = $(this).val();
 	if(markstot != '' && marksobt != ''){
 		if (markstot == 10){
 			if (marksobt <= 10 ){
-				$('#marks').val(parseFloat((marksobt * 9.5)).toFixed(2));
+				$('#marks', $(this).closest("div.acadDetails")).val(parseFloat((marksobt * 9.5)).toFixed(2));
 			} else {
-				$('#marks').val("Enter Valid Marks Obtained (Range 0 to 10)");
+				$('#marks', $(this).closest("div.acadDetails")).val("Enter Valid Marks Obtained (Range 0 to 10)");
 			}
 		} else {
-			$('#marks').val(parseFloat((marksobt/markstot) * 100).toFixed(2));
+			$('#marks', $(this).closest("div.acadDetails")).val(parseFloat((marksobt/markstot) * 100).toFixed(2));
 		}
-		$("#marks").show();
+		$('#marks', $(this).closest("div.acadDetails")).show();
 	}
 });
 $( "#markstot" ).keyup(function() {
-	var markstot = $('#markstot').val();
-	var marksobt = $('#marksobt').val();
+	var markstot = $(this).val();
+	var marksobt = $('#marksobt', $(this).closest("div.acadDetails")).val();
 	if(markstot != '' && marksobt != ''){
 		if (markstot == 10){
 			if (marksobt <= 10 ){
-				$('#marks').val(parseFloat((marksobt * 9.5)).toFixed(2));
+				$('#marks', $(this).closest("div.acadDetails")).val(parseFloat((marksobt * 9.5)).toFixed(2));
 			} else {
-				$('#marks').val("Enter Valid Marks Obtained (Range 0 to 10)");
+				$('#marks', $(this).closest("div.acadDetails")).val("Enter Valid Marks Obtained (Range 0 to 10)");
 			}
 		} else {
-			$('#marks').val(parseFloat((marksobt/markstot) * 100).toFixed(2));
+			$('#marks', $(this).closest("div.acadDetails")).val(parseFloat((marksobt/markstot) * 100).toFixed(2));
 		}
-		$("#marks").show();
+		$('#marks', $(this).closest("div.acadDetails")).show();
 	}
 });
 
@@ -166,7 +165,68 @@ $('#basicDetails').click(function (event) {
 			error: function(error){
 				console.log(error);
 			}
-});
+		});
 		nextt('#basicDetails');
 	}
+});
+$( document ).ready(function() {
+	$("#addCourse").click(function(){
+		$('.acadDetails:first').clone(true).find("input:text").val("").end().appendTo('.acadFormD');
+	});
+
+	$(".removeFromDB").click(function(){
+		var course = $('#course', $(this).closest("div.acadDetails")).val();
+		var degree = $('#degree', $(this).closest("div.acadDetails")).val();
+		console.log("WHY");
+		$.ajax({
+			url: '/delAcad',
+			data : {
+				course : $('#course', $(this).closest("div.acadDetails")).val(),
+				degree : $('#degree', $(this).closest("div.acadDetails")).val(),
+			},
+			type: 'POST',
+			success: function(response){
+				console.log("success");
+			},
+			error: function(error){
+				console.log(error);
+			}
+		});
+		$(this).parent().remove();
+	});
+
+	$(".addToDB").click(function(){
+		var course = $('#course', $(this).closest("div.acadDetails")).val();
+		var degree = $('#degree', $(this).closest("div.acadDetails")).val();
+		var year = $('#year', $(this).closest("div.acadDetails")).val();
+		var uniname = $('#wuniname', $(this).closest("div.acadDetails")).val();
+		var specialization = $('#specialization', $(this).closest("div.acadDetails")).val();
+		var marksobt = $('#marksobt', $(this).closest("div.acadDetails")).val();
+		var markstot = $('#markstot', $(this).closest("div.acadDetails")).val();
+		var marks = $('#marks', $(this).closest("div.acadDetails")).val();
+		if (course == "" || degree == "" || year == "" || uniname == "" || specialization == "" || marksobt == "" || markstot == "" || marks == ""){
+			alert("Enter all the information")
+		} else{
+			$.ajax({
+				url: '/addAcad',
+				data : {
+					course : $('#course', $(this).closest("div.acadDetails")).val(),
+					degree : $('#degree', $(this).closest("div.acadDetails")).val(),
+		      year : $('#year', $(this).closest("div.acadDetails")).val(),
+		      uniname : $('#uniname', $(this).closest("div.acadDetails")).val(),
+					specialization : $('#specialization', $(this).closest("div.acadDetails")).val(),
+					marksobt : $('#marksobt', $(this).closest("div.acadDetails")).val(),
+					markstot : $('#markstot', $(this).closest("div.acadDetails")).val(),
+					marks : $('#marks', $(this).closest("div.acadDetails")).val(),
+				},
+				type: 'POST',
+				success: function(response){
+					console.log("success");
+				},
+				error: function(error){
+					console.log(error);
+				}
+			});
+		}
+		});
 });
