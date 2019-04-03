@@ -174,6 +174,10 @@ $( document ).ready(function() {
 		$('.acadDetails:first').clone(true).find("input:text").val("").end().appendTo('.acadFormD');
 	});
 
+	$("#addMoreSkills").click(function(){
+		$('.uskills:first').clone(true).find("input:text").val("").end().appendTo('.skillsForm');
+	});
+
 	$("#addWorkExp").click(function(){
 		$('.workexperience:first').clone(true).find("input:text").val("").end().appendTo('.workExperienceForm');
 	});
@@ -290,5 +294,42 @@ $( document ).ready(function() {
 					}
 				});
 			}
+		});
+		$(".addSkills").click(function(){
+			var skills = $('#skills', $(this).closest("div.uskills")).val();
+			if (skills == ""){
+				alert("You have not entered any skills.")
+			} else{
+				$.ajax({
+					url: '/addSkills',
+					data : {
+						skills : $('#skills', $(this).closest("div.uskills")).val()
+					},
+					type: 'POST',
+					success: function(response){
+						console.log("success");
+					},
+					error: function(error){
+						console.log(error);
+					}
+				});
+			}
+		});
+		$(".delSkills").click(function(){
+			var skills = $('#skills', $(this).closest("div.uskills")).val();
+			$.ajax({
+				url: '/delSkills',
+				data : {
+					skills : $('#skills', $(this).closest("div.uskills")).val(),
+				},
+				type: 'POST',
+				success: function(response){
+					console.log("success");
+				},
+				error: function(error){
+					console.log(error);
+				}
 			});
+			$(this).parent().remove();
+		});
 });

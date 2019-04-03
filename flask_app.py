@@ -171,5 +171,27 @@ def delWE():
     conn.close()
     return json.dumps({'status':200})
 
+@app.route('/addSkills', methods = ['GET','POST'])
+def addSkills():
+    skills = request.form['skills']
+    conn = sql.connect('static/resumebuilder.db')
+    cur = conn.cursor()
+    cur.execute("INSERT INTO skills (skills,uid)VALUES (?,?)",(skills,session['uid']))
+    conn.commit()
+    cur.close()
+    conn.close()
+    return json.dumps({'status':200})
+
+@app.route('/delSkills', methods = ['GET','POST'])
+def delSkills():
+    skills = request.form['skills']
+    conn = sql.connect('static/resumebuilder.db')
+    cur = conn.cursor()
+    cur.execute("DELETE from skills where uid = ? and skills = ?",(session['uid'],skills))
+    conn.commit()
+    cur.close()
+    conn.close()
+    return json.dumps({'status':200})
+
 if __name__=="__main__":
 	app.run(debug=True,port=5000)
