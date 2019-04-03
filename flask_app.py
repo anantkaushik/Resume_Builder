@@ -237,5 +237,27 @@ def delachievements():
     conn.close()
     return json.dumps({'status':200})
 
+@app.route('/addhobbies', methods = ['GET','POST'])
+def addhobbies():
+    hobbies = request.form['hobbies']
+    conn = sql.connect('static/resumebuilder.db')
+    cur = conn.cursor()
+    cur.execute("INSERT INTO hobbies (hobbies,uid)VALUES (?,?)",(hobbies,session['uid']))
+    conn.commit()
+    cur.close()
+    conn.close()
+    return json.dumps({'status':200})
+
+@app.route('/delhobbies', methods = ['GET','POST'])
+def delhobbies():
+    hobbies = request.form['hobbies']
+    conn = sql.connect('static/resumebuilder.db')
+    cur = conn.cursor()
+    cur.execute("DELETE from hobbies where uid = ? and hobbies = ?",(session['uid'],hobbies))
+    conn.commit()
+    cur.close()
+    conn.close()
+    return json.dumps({'status':200})
+
 if __name__=="__main__":
 	app.run(debug=True,port=5000)
