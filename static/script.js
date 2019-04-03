@@ -174,8 +174,16 @@ $( document ).ready(function() {
 		$('.acadDetails:first').clone(true).find("input:text").val("").end().appendTo('.acadFormD');
 	});
 
+	$("#addAct").click(function(){
+		$('.uactivities:first').clone(true).find("input:text").val("").end().appendTo('.activitiesForm');
+	});
+
 	$("#addMoreSkills").click(function(){
 		$('.uskills:first').clone(true).find("input:text").val("").end().appendTo('.skillsForm');
+	});
+
+	$("#addach").click(function(){
+		$('.uachievements:first').clone(true).find("input:text").val("").end().appendTo('.achievementsForm');
 	});
 
 	$("#addWorkExp").click(function(){
@@ -332,4 +340,82 @@ $( document ).ready(function() {
 			});
 			$(this).parent().remove();
 		});
+
+		$(".addactivities").click(function(){
+			var activities = $('#activities', $(this).closest("div.uactivities")).val();
+			if (activities == ""){
+				alert("You have not entered any activity.")
+			} else{
+				$.ajax({
+					url: '/addactivities',
+					data : {
+						activities : $('#activities', $(this).closest("div.uactivities")).val()
+					},
+					type: 'POST',
+					success: function(response){
+						console.log("success");
+					},
+					error: function(error){
+						console.log(error);
+					}
+				});
+			}
+		});
+
+	$(".delactivities").click(function(){
+		var activities = $('#activities', $(this).closest("div.uactivities")).val();
+		$.ajax({
+			url: '/delactivities',
+			data : {
+				activities : $('#activities', $(this).closest("div.uactivities")).val()
+			},
+			type: 'POST',
+			success: function(response){
+				console.log("success");
+			},
+			error: function(error){
+				console.log(error);
+			}
+		});
+		$(this).parent().remove();
+	});
+
+	$(".addachievements").click(function(){
+		var achievements = $('#achievements', $(this).closest("div.uachievements")).val();
+		if (achievements == ""){
+			alert("You have not entered any activity.")
+		} else{
+			$.ajax({
+				url: '/addachievements',
+				data : {
+					achievements : $('#achievements', $(this).closest("div.uachievements")).val()
+				},
+				type: 'POST',
+				success: function(response){
+					console.log("success");
+				},
+				error: function(error){
+					console.log(error);
+				}
+			});
+		}
+	});
+
+	$(".delachievements").click(function(){
+		var achievements = $('#achievements', $(this).closest("div.uachievements")).val();		
+		$.ajax({
+			url: '/delachievements',
+			data : {
+				achievements : $('#achievements', $(this).closest("div.uachievements")).val()
+			},
+			type: 'POST',
+			success: function(response){
+				console.log("success");
+			},
+			error: function(error){
+				console.log(error);
+			}
+		});
+		$(this).parent().remove();
+	});
 });
