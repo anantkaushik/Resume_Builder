@@ -174,10 +174,41 @@ $( document ).ready(function() {
 		$('.acadDetails:first').clone(true).find("input:text").val("").end().appendTo('.acadFormD');
 	});
 
+	$("#addWorkExp").click(function(){
+		$('.workexperience:first').clone(true).find("input:text").val("").end().appendTo('.workExperienceForm');
+	});
+
+	$(".removeWE").click(function(){
+		var ename = $('#ename', $(this).closest("div.workexperience")).val();
+		var etype = $('#etype', $(this).closest("div.workexperience")).val();
+		var joindate = $('#datePickerId', $(this).closest("div.workexperience")).val();
+		var enddate = $('#enddate', $(this).closest("div.workexperience")).val();
+		var designation = $('#designation', $(this).closest("div.workexperience")).val();
+		var duties = $('#duties', $(this).closest("div.workexperience")).val();
+		$.ajax({
+			url: '/delWE',
+			data : {
+				ename : $('#ename', $(this).closest("div.workexperience")).val(),
+				etype : $('#etype', $(this).closest("div.workexperience")).val(),
+				joindate : $('#datePickerId', $(this).closest("div.workexperience")).val(),
+				enddate : $('#enddate', $(this).closest("div.workexperience")).val(),
+				designation : $('#designation', $(this).closest("div.workexperience")).val(),
+				duties : $('#duties', $(this).closest("div.workexperience")).val(),
+			},
+			type: 'POST',
+			success: function(response){
+				console.log("success");
+			},
+			error: function(error){
+				console.log(error);
+			}
+		});
+		$(this).parent().remove();
+	});
+
 	$(".removeFromDB").click(function(){
 		var course = $('#course', $(this).closest("div.acadDetails")).val();
 		var degree = $('#degree', $(this).closest("div.acadDetails")).val();
-		console.log("WHY");
 		$.ajax({
 			url: '/delAcad',
 			data : {
@@ -229,4 +260,35 @@ $( document ).ready(function() {
 			});
 		}
 		});
+
+		$(".addWE").click(function(){
+			var ename = $('#ename', $(this).closest("div.workexperience")).val();
+			var etype = $('#etype', $(this).closest("div.workexperience")).val();
+			var joindate = $('#datePickerId', $(this).closest("div.workexperience")).val();
+			var enddate = $('#enddate', $(this).closest("div.workexperience")).val();
+			var designation = $('#designation', $(this).closest("div.workexperience")).val();
+			var duties = $('#duties', $(this).closest("div.workexperience")).val();
+			if (etype == "" || joindate == "" || enddate == "" || designation == "" || duties == ""){
+				alert("Enter all the information")
+			} else{
+				$.ajax({
+					url: '/addWE',
+					data : {
+						ename : $('#ename', $(this).closest("div.workexperience")).val(),
+						etype : $('#etype', $(this).closest("div.workexperience")).val(),
+						joindate : $('#datePickerId', $(this).closest("div.workexperience")).val(),
+						enddate : $('#enddate', $(this).closest("div.workexperience")).val(),
+						designation : $('#designation', $(this).closest("div.workexperience")).val(),
+						duties : $('#duties', $(this).closest("div.workexperience")).val(),
+					},
+					type: 'POST',
+					success: function(response){
+						console.log("success");
+					},
+					error: function(error){
+						console.log(error);
+					}
+				});
+			}
+			});
 });
