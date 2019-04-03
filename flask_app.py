@@ -102,6 +102,21 @@ def addbasic():
     #return json.dumps({'status':200, 'edit':edit, 'movid':mov_id})
     return json.dumps({'status':200})
 
+@app.route('/addPersonal', methods = ['GET','POST'])
+def addPersonal():
+    fname = request.form['fname'] if request.form['fname'] else "NULL"
+    dob = request.form['dob'] if request.form['dob'] else "NULL"
+    sex = request.form['sex'] if request.form['sex'] else "NULL"
+    nationality = request.form['nationality'] if request.form['nationality'] else "NULL"
+    conn = sql.connect('static/resumebuilder.db')
+    cur = conn.cursor()
+    cur.execute("UPDATE user SET fname = ?, DOB = ?, sex = ?, nationality = ? where uid = ?",(fname,dob,sex,nationality,session['uid']))
+    conn.commit()
+    cur.close()
+    conn.close()
+    #return json.dumps({'status':200, 'edit':edit, 'movid':mov_id})
+    return json.dumps({'status':200})
+
 @app.route('/addAcad', methods = ['GET','POST'])
 def addAcad():
     print(session['uid'])

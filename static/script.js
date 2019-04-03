@@ -163,6 +163,29 @@ $('#basicDetails').click(function (event) {
 		nextt('#basicDetails');
 	}
 });
+$('#personalDetails').click(function (event) {
+	var fname = $('#fname').val();
+	var dob = $('#dob').val();
+	var sex = $('#sex').val();
+	var nationality = $('#nationality').val();
+	$.ajax({
+		url: '/addPersonal',
+		data : {
+			fname : $('#fname').val(),
+			dob : $('#dob').val(),
+			sex : $('#sex').val(),
+			nationality : $('#nationality').val()
+		},
+		type: 'POST',
+		success: function(response){
+			console.log("success");
+		},
+		error: function(error){
+			console.log(error);
+		}
+	});
+	nextt('#personalDetails');
+});
 $( document ).ready(function() {
 	$("#addCourse").click(function(){
 		$('.acadDetails:first').clone(true).find("input:text").val("").end().appendTo('.acadFormD');
