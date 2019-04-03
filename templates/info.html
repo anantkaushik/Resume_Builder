@@ -71,7 +71,7 @@
             <fieldset>
                 <h2 class="fs-title">Work Experience</h2>
                 <h3 class="fs-subtitle">Fill Details About Your Work Experience</h3>
-                <div id="workexperience">
+                <div class="workexperience">
                     <input type="text" name="ename" placeholder="Name of Employer" id="ename"/>
                     <select name="etype" id="etype" class="dropdwn">
                             <option value="Employement Type" disabled selected>Employement Type</option>
@@ -84,12 +84,18 @@
                     <label for="joindate" class="col-md-2" style="padding-top:15px; float: left;">Duration From</label>
                     <input type="date" id="datePickerId" name="joindatee" class="col-md-10" style="width: 83.3%;"/> 
                     <label for="enddate" class="col-md-2" style="padding-top:15px; float: left;">Duration To</label>
-                    <input type="date" name="enddate" class="col-md-10" style="width: 83.3%;"/>          
+                    <input type="date" id = "enddate" name="enddate" class="col-md-10" style="width: 83.3%;"/>          
                     <input type="text" name="designation" placeholder="Designation" id="designation"/>
                     <input type="text" name="duties" placeholder="Nature of Duties" id="duties"/>     
+                    <input type="button" name="addWE" class="action-button addWE" value="ADD"/>  
+                    <input type="button" name="removeWE" class="action-button removeWE" value="REMOVE"/>                    
+                    <hr> 
                 </div>
-                    <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-                    <input type="button" name="next" class="next action-button" value="Next"/>
+                <div class="workExperienceForm">
+                </div>
+                <input type="button" value="Add More" class="action-button" id="addWorkExp">
+                <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                <input type="button" name="next" class="next action-button" value="Next"/>
             </fieldset>
             <fieldset>
                     <h2 class="fs-title">Skills And Awards</h2>

@@ -140,6 +140,37 @@ def delAcad():
     conn.close()
     return json.dumps({'status':200})
 
+@app.route('/addWE', methods = ['GET','POST'])
+def addWE():
+    ename = request.form['ename']
+    etype = request.form['etype']
+    joindate = request.form['joindate']
+    enddate = request.form['enddate']
+    designation = request.form['designation']
+    duties = request.form['duties']
+    conn = sql.connect('static/resumebuilder.db')
+    cur = conn.cursor()
+    cur.execute("INSERT INTO experience (ename,etype,joindate,enddate,designation,duties,uid)VALUES (?,?,?,?,?,?,?)",(ename,etype,joindate,enddate,designation,duties,session['uid']))
+    conn.commit()
+    cur.close()
+    conn.close()
+    return json.dumps({'status':200})
+
+@app.route('/delWE', methods = ['GET','POST'])
+def delWE():
+    ename = request.form['ename']
+    etype = request.form['etype']
+    joindate = request.form['joindate']
+    enddate = request.form['enddate']
+    designation = request.form['designation']
+    duties = request.form['duties']
+    conn = sql.connect('static/resumebuilder.db')
+    cur = conn.cursor()
+    cur.execute("DELETE from experience where uid = ? and ename = ? and etype = ? and joindate = ? and enddate = ? and designation = ? and duties = ?",(session['uid'],ename,etype,joindate,enddate,designation,duties))
+    conn.commit()
+    cur.close()
+    conn.close()
+    return json.dumps({'status':200})
 
 if __name__=="__main__":
 	app.run(debug=True,port=5000)
