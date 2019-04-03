@@ -60,7 +60,6 @@ def login():
         con.close()
         uid = str(uid)
         uid = uid[1:-2]
-        print(uid)
         ta=str(a)
         output=ta[2:-3]
         tb=str(b)
@@ -70,7 +69,6 @@ def login():
             session['user'] = name
             session['email'] = emailid
             session['uid'] = uid
-            print(session['user'])
             return redirect('/form')
         return "<h1>Password and EmailId does not matched</h1>"
     else:
@@ -78,8 +76,9 @@ def login():
 
 @app.route("/form")
 def form():
-    print(session['user'])
-    return render_template("info.html")
+    if 'user' in session:
+        return render_template("info.html")
+    return redirect("/")
 
 @app.route("/")
 def home():
