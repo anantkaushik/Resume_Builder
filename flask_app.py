@@ -274,5 +274,34 @@ def delhobbies():
     conn.close()
     return json.dumps({'status':200})
 
+@app.route('/addref', methods = ['GET','POST'])
+def addref():
+    rname = request.form['rname']
+    rorg = request.form['rorg'] 
+    rnum = request.form['rnum']
+    remail = request.form['remail']
+    print(rname,rorg,rnum,remail,sep="")
+    conn = sql.connect('static/resumebuilder.db')
+    cur = conn.cursor()
+    cur.execute("INSERT INTO ref (rname,rorg,rnum,remail,uid)VALUES (?,?,?,?,?)",(rname,rorg,rnum,remail,session['uid']))
+    conn.commit()
+    cur.close()
+    conn.close()
+    return json.dumps({'status':200})
+
+@app.route('/delref', methods = ['GET','POST'])
+def delref():
+    rname = request.form['rname']
+    rorg = request.form['rorg'] 
+    rnum = request.form['rnum']
+    remail = request.form['remail']
+    conn = sql.connect('static/resumebuilder.db')
+    cur = conn.cursor()
+    cur.execute("DELETE from ref where uid = ? and rname = ? and rorg = ? and remail=?",(session['uid'],rname,rorg,remail))
+    conn.commit()
+    cur.close()
+    conn.close()
+    return json.dumps({'status':200})
+
 if __name__=="__main__":
 	app.run(debug=True,port=5000)

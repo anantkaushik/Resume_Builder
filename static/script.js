@@ -191,6 +191,10 @@ $( document ).ready(function() {
 		$('.acadDetails:first').clone(true).find("input:text").val("").end().appendTo('.acadFormD');
 	});
 
+	$("#addReference").click(function(){
+		$('.references:first').clone(true).find("input:text").val("").end().appendTo('.referencesForm');
+	});
+
 	$("#addHAI").click(function(){
 		$('.uhobbies:first').clone(true).find("input:text").val("").end().appendTo('.hobbiesForm');
 	});
@@ -478,4 +482,53 @@ $( document ).ready(function() {
 		});
 		$(this).parent().remove();
 	});
+
+	$(".addref").click(function(){
+		var rname = $('#rname', $(this).closest("div.references")).val();
+		var rorg = $('#rorg', $(this).closest("div.references")).val();
+		var rnum = $('#rnum', $(this).closest("div.references")).val();
+		var remail = $('#remail', $(this).closest("div.references")).val();
+		console.log(rname);
+		$.ajax({
+			url: '/addref',
+			data : {
+				rname : $('#rname', $(this).closest("div.references")).val(),
+				rorg : $('#rorg', $(this).closest("div.references")).val(),
+				rnum : $('#rnum', $(this).closest("div.references")).val(),
+				remail : $('#remail', $(this).closest("div.references")).val()
+			},
+			type: 'POST',
+			success: function(response){
+				console.log("success");
+			},
+			error: function(error){
+				console.log(error);
+			}
+		});
+	});
+
+	$(".delref").click(function(){
+		var rname = $('#rname', $(this).closest("div.references")).val();
+		var rorg = $('#rorg', $(this).closest("div.references")).val();
+		var rnum = $('#rnum', $(this).closest("div.references")).val();
+		var remail = $('#remail', $(this).closest("div.references")).val();
+		$.ajax({
+			url: '/delref',
+			data : {
+				rname : $('#rname', $(this).closest("div.references")).val(),
+				rorg : $('#rorg', $(this).closest("div.references")).val(),
+				rnum : $('#rnum', $(this).closest("div.references")).val(),
+				remail : $('#remail', $(this).closest("div.references")).val()
+			},
+			type: 'POST',
+			success: function(response){
+				console.log("success");
+			},
+			error: function(error){
+				console.log(error);
+			}
+		});
+		$(this).parent().remove();
+	});
+
 });
