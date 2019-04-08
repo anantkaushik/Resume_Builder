@@ -318,8 +318,9 @@ def resume():
         cur = con.cursor()
         cur.execute("select * from user where uid = ?",(session['uid'],))
         details = cur.fetchall()
-        print(details)
-        return render_template("resume.html",userDetails = details)
+        cur.execute("select * from academics where uid = ?",(session['uid'],))
+        acadDetails = cur.fetchall()
+        return render_template("resume.html",userDetails = details, acadDetails = acadDetails)
     return redirect("/")
 
 if __name__=="__main__":
