@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{{userDetails[0]['uname']}}</title>
+
+<meta name="viewport" content="width=device-width"/>
+<meta name="description" content="The Curriculum Vitae of Joe Bloggs."/>
+<meta charset="UTF-8">
+
+<link type="text/css" rel="stylesheet" href="static/style1.css">
+<link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700|Lato:400,300' rel='stylesheet' type='text/css'>
+</head>
+<body id="top">
+<div id="cv" class="instaFade">
+	<div class="mainDetails">
+
+		<div id="name">
+			<h1 class="quickFade delayTwo">{{userDetails[0]['uname']}}</h1>
+			<h5 class="quickFade delayThree">{{userDetails[0]['uaddress']}}</h5>
+		</div>
+
+		<div id="contactDetails" class="quickFade delayFour">
+			<ul>
+				<li>Email ID: <a href="mailto:{{userDetails[0]['uemail']}}" target="_blank">{{userDetails[0]['uemail']}}</a></li>
+				{% if userDetails[0]['ulinkedin'] != "NULL" %}
+				<li>LinkedIn: <a href="{{userDetails[0]['ulinkedin']}}">{{userDetails[0]['ulinkedin']}}</a></li>
+				{% endif %}
+				{% if userDetails[0]['uportfolio'] != "NULL" %}
+				<li>Portfolio: <a href="{{userDetails[0]['uportfolio']}}">{{userDetails[0]['uportfolio']}}</a></li>
+				{% endif %}
+				<li>Mobile: {{userDetails[0]['umobno']}}</li>
+			</ul>
+		</div>
+		<div class="clear"></div>
+	</div>
+
+	<div id="mainArea" class="quickFade delayFive">
+		<section>
+			<article>
+				<div class="sectionTitle">
+					<h1>Objective</h1>
+				</div>
+
+				<div class="sectionContent">
+					<p>{{userDetails[0]['uobjective']}}</p>
+				</div>
+			</article>
+			<div class="clear"></div>
+		</section>
+
+		<section>
+			<div class="sectionTitle">
+				<h1>Academic Details</h1>
+			</div>
+
+			<div class="sectionContent">
+				<article>
+					<h2>University/Institute/School</h2>
+					<p class="subDetails">Degree<br>Course Name</p>
+					<p>Year Of Passing: 0000</p>
+					<p>Specialization: XXXX</p>
+					<p>CGPA/Marks Obtained: 00</p>
+					<p>Total CGPA/Marks: 00</p>
+				</article>
+
+				</div>
+			<div class="clear"></div>
+		</section>
+
+		<section>
+			<div class="sectionTitle">
+				<h1>Work Experience</h1>
+			</div>
+
+			<div class="sectionContent">
+				<article>
+					<h2>Designation at Name of Employer</h2>
+					<p class="subDetails">Employment Type<br>Duration From - Duration To</p>
+					<p>Nature of Duties</p>
+				</article>
+
+			</div>
+			<div class="clear"></div>
+		</section>
+
+
+		<section>
+			<div class="sectionTitle">
+				<h1>Skills & Awards</h1>
+			</div>
+
+			<div class="sectionContent">
+				<ul class="keySkills">
+					<li>Skill/Activity/Award</li>
+					<li>Skill/Activity/Award</li>
+					<li>Skill/Activity/Award</li>
+					<li>Skill/Activity/Award</li>
+					<li>Skill/Activity/Award</li>
+					<li>Skill/Activity/Award</li>
+					<li>Skill/Activity/Award</li>
+					<li>Skill/Activity/Award</li>
+					<li>Skill/Activity/Award</li>
+					<li>Skill/Activity/Award</li>
+					<li>Skill/Activity/Award</li>
+					<li>Skill/Activity/Award</li>
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</section>
+		{% if userDetails[0]['DOB'] != "NULL" %}
+		<section>
+			<div class="sectionTitle">
+				<h1>Personal Details</h1>
+			</div>
+
+			<div class="sectionContent">
+				<article>
+					{% if userDetails[0]['fname'] != "NULL" %}
+					<p>Father's Name: {{userDetails[0]['fname']}}</p>
+					{% endif %}
+					<p>DOB: {{userDetails[0]['DOB']}}</p>
+					{% if userDetails[0]['sex'] != "NULL" %}
+					<p>Gender: {{userDetails[0]['sex']}}</p>
+					{% endif %}
+					{% if userDetails[0]['nationality'] != "NULL" %}
+					<p>Nationality: {{userDetails[0]['nationality']}}</p>
+					{% endif %}
+					<p>Hobbies and Interest: A B C D</p>
+				</article>
+
+				</div>
+			<div class="clear"></div>
+		</section>
+		{% endif %}
+		<section>
+			<div class="sectionTitle">
+				<h1>Refrences</h1>
+			</div>
+
+			<div class="sectionContent">
+				<article>
+					<p>Refrence Name: SSS</p>
+					<p>Organization: AAA</p>
+					<p>Mobile Number: 01234567890</p>
+					<p>Email ID: <a href="mailto:aaa@abc.com" target="_blank">aaa@abc.com</a></p>
+				</article>
+
+				</div>
+			<div class="clear"></div>
+		</section>
+
+
+
+	</div>
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-3753241-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+</body>
+</html>
