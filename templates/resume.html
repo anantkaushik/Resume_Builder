@@ -54,14 +54,17 @@
 			</div>
 
 			<div class="sectionContent">
+				{% for d in acadDetails %}
 				<article>
-					<h2>University/Institute/School</h2>
-					<p class="subDetails">Degree<br>Course Name</p>
-					<p>Year Of Passing: 0000</p>
-					<p>Specialization: XXXX</p>
-					<p>CGPA/Marks Obtained: 00</p>
-					<p>Total CGPA/Marks: 00</p>
+					<h2>{{d['uniname']}}</h2>
+					<p class="subDetails">{{d['uniname']}}<br>{{d['course']}}</p>
+					<p>Year Of Passing: {{d['year']}}</p>
+					<p>Specialization: {{d['specialization']}}</p>
+					<p>Percentage: {{d['marks']}}</p>
+					<!-- <p>CGPA/Marks Obtained: 00</p>
+					<p>Total CGPA/Marks: 00</p> -->
 				</article>
+				{% endfor %}
 
 				</div>
 			<div class="clear"></div>
@@ -73,24 +76,26 @@
 			</div>
 
 			<div class="sectionContent">
+				{% for d in we %}
 				<article>
-					<h2>Designation at Name of Employer</h2>
-					<p class="subDetails">Employment Type<br>Duration From - Duration To</p>
-					<p>Nature of Duties</p>
+					<h2>{{d['designation']}} at {{d['ename']}}</h2>
+					<p class="subDetails">{{d['etype']}}<br>{{"/".join(d['joindate'].split("-"))}} - {{"/".join(d['enddate'].split("-"))}}</p>
+					<p>{{d['duties']}}</p>
 				</article>
-
+				{% endfor %}
 			</div>
 			<div class="clear"></div>
 		</section>
 
-
+		{% if skills %}
 		<section>
 			<div class="sectionTitle">
-				<h1>Skills & Awards</h1>
+				<h1>Skills</h1>
 			</div>
 
 			<div class="sectionContent">
-				<ul class="keySkills">
+				{{skills}}
+				<!-- <ul class="keySkills">
 					<li>Skill/Activity/Award</li>
 					<li>Skill/Activity/Award</li>
 					<li>Skill/Activity/Award</li>
@@ -103,10 +108,38 @@
 					<li>Skill/Activity/Award</li>
 					<li>Skill/Activity/Award</li>
 					<li>Skill/Activity/Award</li>
-				</ul>
+				</ul> -->
 			</div>
 			<div class="clear"></div>
 		</section>
+		{% endif %}
+
+		{% if act %}
+		<section>
+			<div class="sectionTitle">
+				<h1>Activities</h1>
+			</div>
+
+			<div class="sectionContent">
+				{{act}}
+			</div>
+			<div class="clear"></div>
+		</section>
+		{% endif %}
+
+		{% if ach %}
+		<section>
+			<div class="sectionTitle">
+				<h1>Achievements</h1>
+			</div>
+
+			<div class="sectionContent">
+				{{ach}}
+			</div>
+			<div class="clear"></div>
+		</section>
+		{% endif %}
+
 		{% if userDetails[0]['DOB'] != "NULL" %}
 		<section>
 			<div class="sectionTitle">
@@ -125,30 +158,31 @@
 					{% if userDetails[0]['nationality'] != "NULL" %}
 					<p>Nationality: {{userDetails[0]['nationality']}}</p>
 					{% endif %}
-					<p>Hobbies and Interest: A B C D</p>
+					<p>Hobbies and Interest: {{hob}}</p>
 				</article>
 
 				</div>
 			<div class="clear"></div>
 		</section>
 		{% endif %}
+		{% if ref %}
 		<section>
 			<div class="sectionTitle">
 				<h1>Refrences</h1>
 			</div>
-
+			{% for d in ref %}
 			<div class="sectionContent">
 				<article>
-					<p>Refrence Name: SSS</p>
-					<p>Organization: AAA</p>
-					<p>Mobile Number: 01234567890</p>
-					<p>Email ID: <a href="mailto:aaa@abc.com" target="_blank">aaa@abc.com</a></p>
+					<p>Refrence Name: {{d['rname']}}</p>
+					<p>Organization: {{d['rorg']}}</p>
+					<p>Mobile Number: {{d['rnum']}}</p>
+					<p>Email ID: <a href="mailto:{{d['remail']}}" target="_blank">{{d['remail']}}</a></p>
 				</article>
-
-				</div>
+			</div>
+			{% endfor %}
 			<div class="clear"></div>
 		</section>
-
+		{% endif %}
 
 
 	</div>

@@ -320,7 +320,31 @@ def resume():
         details = cur.fetchall()
         cur.execute("select * from academics where uid = ?",(session['uid'],))
         acadDetails = cur.fetchall()
-        return render_template("resume.html",userDetails = details, acadDetails = acadDetails)
+        cur.execute("select * from experience where uid = ?",(session['uid'],))
+        we = cur.fetchall()
+        cur.execute("select * from ref where uid = ?",(session['uid'],))
+        ref = cur.fetchall()
+        cur.execute("select * from skills where uid = ?",(session['uid'],))
+        skills = cur.fetchall()
+        skillsArr = []
+        for d in skills:
+            skillsArr.append(d['skills'])
+        cur.execute("select * from activities where uid = ?",(session['uid'],))
+        act = cur.fetchall()
+        actArr = []
+        for d in act:
+            actArr.append(d['activities'])
+        cur.execute("select * from achievements where uid = ?",(session['uid'],))
+        ach = cur.fetchall()
+        achArr = []
+        for d in ach:
+            achArr.append(d['achievements'])
+        cur.execute("select * from hobbies where uid = ?",(session['uid'],))
+        hob = cur.fetchall()
+        hobArr = []
+        for d in hob:
+            hobArr.append(d['hobbies'])
+        return render_template("resume.html",userDetails = details, acadDetails = acadDetails,we = we, skills = ",".join(skillsArr), act = ",".join(actArr),ach = ",".join(achArr),hob = ",".join(hobArr),ref = ref)
     return redirect("/")
 
 if __name__=="__main__":
